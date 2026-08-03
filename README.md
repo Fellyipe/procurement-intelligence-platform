@@ -1,7 +1,7 @@
 <h1 align="center">Sistema Inteligente para Descoberta de Oportunidades em Licitações Públicas</h1>
 
 <p align="center">
-  Python | FastAPI | Groq | PostgreSQL | Docker
+  FastAPI | Next.js | Groq | PostgreSQL | Docker
 </p>
 
 <p align="center">
@@ -40,18 +40,37 @@ graph TD
     D -->|Persiste análise| C
     C -->|Consulta de dados e análises| F[FastAPI]
     F -->|REST API| G[Frontend]
+
+    G --> H[Empresas]
+    H -->|Perfil Comercial| F
+    F -->|Matching| C
 ```
 ---
 
 ## 🛠️ Stack
 
-- **Python**
-- **FastAPI**
-- **SQLAlchemy**
-- **PostgreSQL**
-- **Groq**
-- **Llama 3.3**
-- **Docker**
+### Backend
+
+- Python
+- FastAPI
+- SQLAlchemy
+- PostgreSQL
+
+### IA
+
+- Groq API
+- Llama 3.3
+
+### Frontend
+
+- Next.js
+- React
+- TypeScript
+- Tailwind CSS
+
+### Infraestrutura
+
+- Docker
 
 ---
 
@@ -65,6 +84,9 @@ graph TD
   - setores relacionados
 - API REST para consulta e filtros
 - Mecanismo de matching entre empresas e licitações
+- Cadastro de perfil comercial da empresa
+- Interface Web para pesquisa e gerenciamento
+
 
 ---
 
@@ -85,3 +107,13 @@ graph TD
 **4. Limitações dos modelos de linguagem**
 * **Problema:** Modelos menores apresentaram baixa capacidade para interpretar corretamente descrições heterogêneas e identificar o contexto comercial das licitações.
 * **Solução:** Comparação entre modelos executados localmente e modelos hospedados, resultando na adoção da API da Groq como estratégia para equilibrar qualidade das análises, latência operacional, custos e simplicidade da infraestrutura.
+
+---
+
+## 🚀 Próximos Passos
+
+- Autenticação de usuários
+- Sistema de notificações de novas oportunidades
+- Dashboard de recomendações
+- Upload e gerenciamento de documentos
+- Expansão do algoritmo de matching
