@@ -32,7 +32,7 @@ Este projeto consiste no desenvolvimento de uma plataforma para descoberta de op
 
 ```mermaid
 graph TD
-    A[API Pública do PNCP] -->|Coleta incremental| B[Collector Worker]
+    A(API Pública do PNCP) -->|Coleta incremental| B[Collector Worker]
     B -->|Licitações e Itens| C[(PostgreSQL)]
     C -->|Licitações pendentes| D[Analysis Worker]
     D -->|Prompt estruturado| E[Groq API<br/>Llama]
@@ -41,8 +41,10 @@ graph TD
     C -->|Consulta de dados e análises| F[FastAPI]
     F -->|REST API| G[Frontend]
 
-    G --> H[Empresas]
-    H -->|Perfil Comercial| F
+    F <--> H[(Redis)]
+
+    G --> I(Empresas)
+    I -->|Perfil Comercial| F
     F -->|Matching| C
 ```
 ---
@@ -59,7 +61,7 @@ graph TD
 ### IA
 
 - Groq API
-- Llama 3.3
+- GPT-OSS
 
 ### Frontend
 
@@ -71,6 +73,7 @@ graph TD
 ### Infraestrutura
 
 - Docker
+- Redis
 
 ---
 
@@ -82,10 +85,12 @@ graph TD
   - descrição normalizada
   - palavras-chave
   - setores relacionados
-- API REST para consulta e filtros
 - Mecanismo de matching entre empresas e licitações
 - Cadastro de perfil comercial da empresa
-- Interface Web para pesquisa e gerenciamento
+- Recomendações personalizadas de licitações
+- Pesquisa e filtragem de oportunidades
+- Visualização detalhada de licitações e itens
+- Cache de resultados com Redis
 
 
 ---
@@ -110,10 +115,23 @@ graph TD
 
 ---
 
+## 🖥️ Interface
+
+### Oportunidades
+<img width="1161" height="429" src="https://github.com/user-attachments/assets/b9af4912-1d73-4e38-8d68-aaecb0c7d335" />
+
+
+### Detalhes da oportunidade
+<img width="1159" height="730" src="https://github.com/user-attachments/assets/1bf803d3-b784-4a7e-91ff-5711e3460ba7" />
+
+
+---
+
 ## 🚀 Próximos Passos
 
-- Autenticação de usuários
+- Autenticação e gerenciamento de usuários e empresas
 - Sistema de notificações de novas oportunidades
 - Dashboard de recomendações
 - Upload e gerenciamento de documentos
+- Deploy e configuração do ambiente de produção
 - Expansão do algoritmo de matching
